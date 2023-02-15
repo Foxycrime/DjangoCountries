@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<nav>
+{% for count in countries %}
+  {% ifchanged obj.title.0 %}<h1>{{obj.title.0}}</h1>{% endifchanged%}
+  # display the object
+  <h2>obj.title</h2>
+{% endfor %}
+</nav>
+</body>
+</html>
