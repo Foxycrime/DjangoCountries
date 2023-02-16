@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>countries</title>
+</head>
+<body>
+<header>
+    / <a href="/">Главная</a> / <a href="/countries-list/">Страны</a> / <a href="/languages_list/">Языки</a> /
+</header>
+<h1></h1>
+<h2>Страны:</h2>
+<ol>
+	{% for country in countries_list %}
+    <li><a href="/country/{{ country.country }}">{{ country.country }}</a></li>
+    {% endfor %}
+</ol>
+<h2>Пример пагинации:</h2>
+<ol>
+    {% for country in page_obj %}
+        <li><a href="/country/{{ country.country }}">{{ country.country }}</a></li>
+    {% endfor %}
+</ol>
+<div class="pagination">
+    <span class="step-links">
+        {% if page_obj.has_previous %}
+            <a href="?page=1&word={{ word }}">&laquo; Первая</a>
+            <a href="?page={{ page_obj.previous_page_number }}&word={{ word }}">Назад</a>
+        {% endif %}
+        <span class="current">
+            Страница {{ page_obj.number }} из {{ page_obj.paginator.num_pages }}.
+        </span>
+
+
+        {% if page_obj.has_next %}
+            <a href="?page={{ page_obj.next_page_number }}&word={{ word }}">Далее</a>
+            <a href="?page={{ page_obj.paginator.num_pages }}&word={{ word }}">Последняя &raquo;</a>
+        {% endif %}
+    </span>
+</div>
+</body>
+</html>

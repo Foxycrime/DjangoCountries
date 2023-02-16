@@ -1,9 +1,5 @@
-from django.shortcuts import render, HttpResponse
-from django.http import HttpResponseNotFound
-from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
-
-countries = [
-    {
+[
+  {
         "country": "Aruba",
         "languages": [
             "Dutch",
@@ -2163,44 +2159,3 @@ countries = [
         ]
     }
 ]
-
-def about(request):
-    return render(request, 'about.html')
-
-def country_page(request, country):
-    for count in countries:
-        if count['country'] == country:
-            context = {
-                "count": countries
-            }
-            return render(request, 'country.html', context)
-    return HttpResponseNotFound(f"Страна {country} не найдена")
-
-def list(request):
-    paginator = Paginator(countries, 10)
-    page_number = request.GET.get('page')
-    page_obj = paginator.get_page(page_number)
-    context = {
-        "countries_list": countries,
-        "page_obj": page_obj
-    }
-    return render(request, "countries.html", context)
-
-def languages_list(request):
-    langs = set()
-    for country in countries:
-        langs.update(country["languages"])
-    return render(request, 'languages-list.html', {"languages": sorted(langs)})
-
-def country(request, language):
-    counts = []
-    for lang in countries:
-        for lang1 in lang['languages']:
-            if lang1 == language:
-                counts.append(lang['country'])
-    context = {"lang ": counts}
-    return render(request, "language.html", context)
-
-
-
-

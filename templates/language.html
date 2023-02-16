@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Страны</title>
+    <a href="/languages_list/">Список всех языков</a>
+</head>
+<body>
+    <ol>
+            {% if counts %}
+            {% for lang in counts %}
+            <li>{{ lang }}</li>
+
+            {% endfor %}
+    </ol>
+{% endif %}
+</body>
+</html>

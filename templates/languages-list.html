@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Языки</title>
+</head>
+<body>
+<header>
+    / <a href="/">Главная</a> / <a href="/countries-list/">Страны</a> / <a href="/languages_list/">Языки</a> /
+</header>
+<h2>Языки:</h2>
+<ol>
+    {% for language in languages %}
+        <li><a href="/countries-list/{{ language }}"> {{ language }}</a></li>
+    {% endfor %}
+</ol>
+</body>
+</html>
