@@ -2164,11 +2164,12 @@ countries = [
     }
 ]
 
-
+# TODO: в проекте нет файла .gitignore, его нужно добавить и убрать из под репозитория ненужные файлы и папки.
 
 def about(request):
     return render(request, 'about.html')
 
+# TODO: все функции обработчики нужно переписать на использование html-шаблонов
 def item_page(request, country):
     for country in countries:
         if countries['country'] == country:
@@ -2192,6 +2193,8 @@ def list(request):
         page += f"<li><a href='/country/{count['country']}'>{count['country']}</a></li>"
     page += "</ol>"
 
+    # TODO: если с пагинатором не получились, ничего страшного - сделайте без пагинации
+    #   Но полноценно, через html-шбалоны
     # contact_list = page
     # paginator = Paginator(contact_list, 10)
     #
@@ -2199,6 +2202,7 @@ def list(request):
     # page_obj = paginator.get_page(page_number)
     return HttpResponse(page) #{'page_obj': page_obj}
 
+# TODO: эта функция вообще не реализована - возвращает пустую страницу
 def languages_list(reqest):
     return render(reqest, 'languages.html')
 
